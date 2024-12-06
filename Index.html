@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mbonyii</title>
+    <style>
+    /* Modern Cool Portfolio CSS */
+:root {
+    /* Enhanced color palette with gradient and modern tones */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-light: #f4f6f7;
+    --background-dark: #2c3e50;
+    --text-primary: #2c3e50;
+    --text-secondary: #34495e;
+    --accent-color: #e74c3c;
+
+    /* Smooth typography scale */
+    --font-size-small: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-medium: 1.25rem;
+    --font-size-large: 2rem;
+    --font-size-xlarge: 2.5rem;
+}
+
+/* Smooth, modern reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, var(--background-light) 0%, #e9ecef 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Stylish Header with Parallax-like Effect */
+header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    transform: skewY(-6deg);
+    transform-origin: top left;
+    z-index: -1;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+/* Elegant Section Styling */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(50, 50, 93, 0.15), 0 7px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Cool Button Styles */
+.button, .theme-toggle {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.button:hover, .theme-toggle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Styling */
+.form-section input, 
+.form-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid var(--background-light);
+    border-radius: 10px;
+    background: var(--background-light);
+    transition: all 0.3s ease;
+}
+
+.form-section input:focus, 
+.form-section textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Footer with Gradient */
+footer {
+    background: linear-gradient(45deg, var(--background-dark), #34495e);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* Dark Mode Toggle with Cool Animation */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--background-light);
+    color: var(--text-primary);
+    border: none;
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.theme-toggle::before {
+    content: '🌙';
+    display: inline-block;
+    margin-right: 10px;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, var(--background-dark) 0%, #233240 100%);
+    color: #ecf0f1;
+}
+
+body.dark-mode .theme-toggle::before {
+    content: '☀️';
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 1rem;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+}
+
+/* Scroll Bar Styling for Modern Look */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+}
+
+/* Subtle Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    animation: fadeIn 0.7s ease forwards;
+    opacity: 0;
+    animation-delay: calc(var(--section-index) * 0.2s);
+}
+.form-section button {
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="theme-toggle">Switch to Dark Mode</button>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Mbonyingabo Naguel</h1>
+        <img src="yy.jpeg" alt="Profile Picture" class="profile-img">
+        <p>A passionate Software Engineer located in Rwanda, building innovative software solutions.</p>
+        <p><a class="button" href="#contact">Get in Touch</a></p>
+    </header>
+
+    <div class="container">
+
+        <!-- Professional Summary -->
+        <section>
+            <h2>Professional Summary</h2>
+            <p>I am a skilled software engineer specializing in backend development and cross-platform mobile applications.
+                I am proficient in Java, React, and Linux, and I strive to deliver scalable, efficient, and user-friendly solutions.
+                My goal is to leverage technology to solve real-world problems and make a meaningful impact.</p>
+        </section>
+
+        <!-- Education Background -->
+        <section>
+            <h2>Education Background</h2>
+            <ul>
+                <li><strong>Primary School:</strong> Ecole Autonome de Butare</li>
+                <li><strong>Secondary School:</strong> PSVF</li>
+                <li><strong>University:</strong> Adventist University of Central Africa (AUCA)</li>
+            </ul>
+        </section>
+
+        <!-- Experience Background -->
+        <section>
+            <h2>Experience Background</h2>
+            <ul>
+                <li><strong>Internship:</strong> Rwanda Revenue Authority (RRA)</li>
+                <li><strong>Work:</strong> WEC</li>
+            </ul>
+        </section>
+
+        <!-- Skills -->
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>Programming: Java, React</li>
+                <li>Operating Systems: Linux</li>
+                <li>Web Development: HTML, CSS, JavaScript</li>
+            </ul>
+        </section>
+
+        <!-- Certificates -->
+        <section>
+            <h2>Certificates</h2>
+            <ul>
+                <li>Cisco Network Essentials</li>
+                <li>Cisco Network Security</li>
+            </ul>
+        </section>
+
+        <!-- Contact Information -->
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <p>📞 Phone: 0790705676</p>
+                <p>📧 Email: <a href="mailto:mbonyiiinaguel@gmail.co">mbonyiiinaguel@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- Input Form for Database -->
+        <section class="form-section">
+            <h2>Database Entry Form</h2>
+            <form id="db-form" action="submit.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+            
+                <button class="form-section button" type="submit">Submit</button>
+            </form>
+            
+        </section>
+
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = 'Switch to Light Mode';
+            } else {
+                themeToggle.textContent = 'Switch to Dark Mode';
+            }
+        });
+
+        // Form submission handler (optional, can be updated based on requirements)
+        document.getElementById('db-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted!');
+        });
+    </script>
+</body>
+
+</html>
